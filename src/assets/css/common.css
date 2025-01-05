@@ -212,6 +212,12 @@ button {
   transition: 0.2s linear;
 }
 
+.header .theme-toggle.active {
+  border: 2px solid white; 
+  border-radius: 8px; 
+  padding: 5px 15px; 
+}
+
 .header .theme-toggle .theme-icon {
   font-size: 20px;
 }

@@ -44,7 +44,7 @@ body {
 .country-flag {
   flex-shrink: 0;
   width: 450px;
-  max-width: 450px;
+  max-width: 320px;
   max-height: 350px;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
   overflow: hidden;

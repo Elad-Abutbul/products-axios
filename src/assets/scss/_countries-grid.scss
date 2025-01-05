@@ -1,3 +1,6 @@
+@use "./variables" as vars; 
+@use "./mixins" as mixins;
+
 .main {
   .container {
     display: flex;
@@ -15,32 +18,32 @@
     place-items: center;
   }
 
-  @include breakpoint-up(medium) {
+  @include mixins.breakpoint-up(medium) {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @include breakpoint-up(large) {
+  @include mixins.breakpoint-up(large) {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  @include breakpoint-up(xlarge) {
+  @include mixins.breakpoint-up(xlarge) {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   }
 
   .country {
     position: relative;
     width: 100%;
-    border-radius: $border-radius;
-    color: $tx-very-dark-blue;
-    box-shadow: $box-shadow;
-    background: $white;
+    border-radius: vars.$border-radius;
+    color: vars.$tx-very-dark-blue;
+    box-shadow: vars.$box-shadow;
+    background: vars.$white;
     overflow: hidden;
-    transition: transform $main-transition, box-shadow $fast-transition,
-      background-color $fast-transition;
+    transition: transform vars.$main-transition, box-shadow vars.$fast-transition,
+      background-color vars.$fast-transition;
 
     &:hover {
       transform: scale(1.04);
-      box-shadow: $box-shadow-alt;
+      box-shadow: vars.$box-shadow-alt;
     }
   }
 

@@ -1,48 +1,49 @@
+@use 'variables' as vars;
+@use "sass:color";
+
 body {
   &.dark-theme {
-    $box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-
-    background-color: $bg-very-dark-blue;
-    color: $white;
+    background-color: vars.$bg-very-dark-blue;
+    color: vars.$white;
 
     h1,
     h2,
     h3,
     h4 {
-      color: $white;
+      color: vars.$white;
     }
 
     .header {
-      background: $dark-blue;
+      background: vars.$dark-blue;
 
       .theme-toggle {
-        color: $white;
+        color: vars.$white;
       }
     }
 
     .filters {
       .search-icon {
-        color: $white;
+        color: vars.$white;
       }
 
       .search-input {
-        color: $white;
-        background-color: $dark-blue;
+        color: vars.$white;
+        background-color: vars.$dark-blue;
 
         &::placeholder {
-          color: $white;
+          color: vars.$white;
         }
       }
 
       .dropdown-header,
       .dropdown-body {
-        background: $dark-blue;
+        background: vars.$dark-blue;
       }
 
       .dropdown-body {
         li {
           &:hover {
-            background-color: lighten($color: $dark-blue, $amount: 5%);
+            background-color: color.adjust(vars.$dark-blue, $lightness: 5%);
           }
         }
       }
@@ -50,43 +51,43 @@ body {
 
     .countries-grid {
       .country {
-        color: $white;
-        background: $dark-blue;
+        color: vars.$white;
+        background: vars.$dark-blue;
 
         span {
-          color: $white;
+          color: vars.$white;
         }
       }
     }
 
     .loader {
-      background-color: $bg-very-dark-blue;
+      background-color: vars.$bg-very-dark-blue;
 
       .spinner .icon {
-        color: $white;
+        color: vars.$white;
       }
     }
 
     .scroll-top {
-      background-color: $dark-blue;
+      background-color: vars.$dark-blue;
     }
 
     .notifi-wrapper {
-      color: $white;
+      color: vars.$white;
     }
 
     .btn {
-      background-color: $dark-blue;
-      color: $white;
-      box-shadow: $box-shadow;
+      background-color: vars.$dark-blue;
+      color: vars.$white;
+      box-shadow: vars.$box-shadow-alt;
     }
 
     .country-info {
       li {
-        color: $dark-gray;
+        color: vars.$dark-gray;
       }
       strong {
-        color: $white;
+        color: vars.$white;
       }
     }
   }

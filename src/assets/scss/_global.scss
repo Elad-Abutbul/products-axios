@@ -1,3 +1,7 @@
+@use './variables' as vars;
+@use './mixins' as mixins;
+
+
 *,
 *:after,
 *::before {
@@ -16,9 +20,9 @@ body {
   font-family: "Nunito Sans", sans-serif;
   font-weight: 600;
   font-size: 14px;
-  background-color: $very-light-gray;
-  color: $tx-very-dark-blue;
-  transition: $fast-transition;
+  background-color: vars.$very-light-gray;
+  color: vars.$tx-very-dark-blue;
+  transition: vars.$fast-transition;
 }
 
 a {
@@ -34,7 +38,7 @@ h1,
 h2,
 h3,
 h4 {
-  color: $tx-very-dark-blue;
+  color: vars.$tx-very-dark-blue;
 }
 
 .container {
@@ -42,13 +46,13 @@ h4 {
   padding-right: 1.875rem;
   padding-left: 1.875rem;
 
-  @include breakpoint-up(large) {
+  @include mixins.breakpoint-up(large) {
     width: 94%;
     margin-right: auto;
     margin-left: auto;
   }
 
-  @include max-400 {
+  @include mixins.max-400 {
     padding-right: 1.25rem;
     padding-left: 1.25rem;
   }
@@ -85,18 +89,18 @@ button {
 
 .btn {
   display: inline-block;
-  background-color: $white;
-  color: $tx-very-dark-blue;
+  background-color: vars.$white;
+  color: vars.$tx-very-dark-blue;
   text-transform: capitalize;
-  box-shadow: $box-shadow;
+  box-shadow: vars.$box-shadow;
   padding: 7px 21px;
-  border-radius: $border-radius - 2;
-  transition: $fast-transition;
+  border-radius: vars.$border-radius - 2;
+  transition: vars.$fast-transition;
 }
 
 .scale-effect:active {
   transform: scale(0.88);
-  transition: transform $fast-transition;
+  transition: transform vars.$fast-transition;
 }
 
 .show-more {

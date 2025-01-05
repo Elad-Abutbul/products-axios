@@ -1,9 +1,12 @@
+@use 'variables' as vars;
+@use './mixins' as mixins;
+
 .header {
   position: relative;
-  background: $white;
+  background: vars.$white;
   padding: 1.25rem 0; // 20px
-  box-shadow: $box-shadow;
-  transition: $fast-transition;
+  box-shadow: vars.$box-shadow;
+  transition: vars.$fast-transition;
 
   .container {
     display: flex;
@@ -15,11 +18,11 @@
     h1 {
       font-size: 20px;
 
-      @include max-400 {
+      @include mixins.max-400 {
         font-size: 16px;
       }
 
-      @include breakpoint-up(large) {
+      @include mixins.breakpoint-up(large) {
         font-size: 22px;
       }
     }
@@ -28,8 +31,8 @@
   .theme-toggle {
     gap: 0.625rem;
     font-size: 14px;
-    color: $tx-very-dark-blue;
-    transition: $fast-transition;
+    color: vars.$tx-very-dark-blue;
+    transition: vars.$fast-transition;
 
     .theme-icon {
       font-size: 20px;
@@ -39,7 +42,7 @@
       font-weight: 600;
       text-transform: capitalize;
 
-      @include max-400 {
+      @include mixins.max-400 {
         display: none;
       }
     }
