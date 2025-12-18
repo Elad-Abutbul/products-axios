@@ -1,68 +1,52 @@
-import { useState, useEffect } from "react";
-import { useParams, useSearchParams } from "react-router-dom";
-import Navbar from "../components/ui-elements/Navbar";
-import BackButton from "../components/ui-elements/BackButton";
-import CountryFlag from "../components/country-components/CountryFlag";
-import Country from "../components/country-components/Country";
-import Loading from "../components/ui-elements/Loading";
-import "../assets/css/details.css";
-import "../assets/css/common.css";
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import Navbar from '../components/ui-elements/Navbar';
+import BackButton from '../components/ui-elements/BackButton';
+import ProductImage from '../components/product-components/ProductImage';
+import Product from '../components/product-components/Product';
+import Loading from '../components/ui-elements/Loading';
+import '../assets/css/details.css';
+import '../assets/css/common.css';
 
 const Details = () => {
-  const { countryName } = useParams();
-  const [searchParams] = useSearchParams();
-  const countryQuery = searchParams.get("country") || countryName;
+  const { productId } = useParams();
 
-  const [countryData, setCountryData] = useState(null);
+  const [productData, setProductData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    if (!countryQuery) {
-      setError("Country not specified");
-      setLoading(false);
-      return;
-    }
+  // API endpoint: `https://fakestoreapi.com/products/${productId}`
 
-    const fetchCountryData = async () => {
-      try {
-        const response = await fetch(
-          `https://restcountries.com/v3.1/name/${encodeURIComponent(
-            countryQuery
-          )}`
-        );
-        if (!response.ok) {
-          throw new Error("Failed to fetch country data");
-        }
-        const data = await response.json();
-        setCountryData(data[0]);
-        setLoading(false);
-      } catch (err) {
-        setError(err.message);
-        setLoading(false);
-      }
-    };
 
-    fetchCountryData();
-  }, [countryQuery]);
+  //TODO: Add useEffect hook to fetch product details
+  //TODO: Check if productId exists, if not set error and return
+  //TODO: Create fetchProductData async function inside useEffect
+  //TODO: Use axios.get() to fetch from the API
+  //TODO: Update state with setProductData()
+  //TODO: Handle loading state with setLoading(false)
+  //TODO: Handle errors with setError()
+  //TODO: Add productId to dependency array
+
+ 
 
   if (loading) return <Loading />;
   if (error) return <p>Error: {error}</p>;
 
-  if (!countryData) return <p>No country data available</p>;
+  if (!productData) return <p>No product data available</p>;
 
   return (
     <>
       <Navbar />
       <BackButton />
-      <main className="main">
-        <div className="container">
-          <section className="country-details">
-            <CountryFlag
-              src={countryData.flags.svg || countryData.flags.png}
-              alt={countryData.name.common}
+      <main className='main'>
+        <div className='container'>
+          <section className='product-details'>
+            <ProductImage
+              src={productData.image || ''}
+              alt={productData.title}
             />
-            <Country country={countryData}></Country>
+            <Product product={productData} isDetail={true}></Product>
           </section>
         </div>
       </main>

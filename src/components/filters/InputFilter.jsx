@@ -1,13 +1,13 @@
-import Input from "../ui-elements/Input";
+import Input from '../ui-elements/Input';
 
 const InputFilter = (props) => {
   return (
-    <div className="search-wrapper">
-      <i className="fa-regular fa-magnifying-glass search-icon"></i>
+    <div className='search-wrapper'>
+      <i className='fa-regular fa-magnifying-glass search-icon'></i>
       <Input
-        type="text"
-        className="search-input"
-        placeholder="Search for a country..."
+        type='text'
+        className='search-input'
+        placeholder='Search for a product...'
         onChange={props.onChange}
       />
     </div>

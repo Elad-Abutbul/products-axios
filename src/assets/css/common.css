@@ -213,9 +213,9 @@ button {
 }
 
 .header .theme-toggle.active {
-  border: 2px solid white; 
-  border-radius: 8px; 
-  padding: 5px 15px; 
+  border: 2px solid white;
+  border-radius: 8px;
+  padding: 5px 15px;
 }
 
 .header .theme-toggle .theme-icon {
@@ -275,12 +275,12 @@ body.dark-theme .filters .dropdown-body li:hover {
   background-color: #354555;
 }
 
-body.dark-theme .countries-grid .country {
+body.dark-theme .products-grid .product {
   color: white;
   background: #2b3945;
 }
 
-body.dark-theme .countries-grid .country span {
+body.dark-theme .products-grid .product span {
   color: white;
 }
 
@@ -306,10 +306,10 @@ body.dark-theme .btn {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-body.dark-theme .country-info li {
+body.dark-theme .product-info li {
   color: #858585;
 }
 
-body.dark-theme .country-info strong {
+body.dark-theme .product-info strong {
   color: white;
 }

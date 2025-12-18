@@ -16,18 +16,18 @@ body {
   column-gap: 12px;
 }
 
-.country-details {
+.product-details {
   width: 100%;
 }
 
 @media (min-width: 64em) {
-  .country-details {
+  .product-details {
     display: flex;
     align-items: flex-start;
   }
 }
 
-.country-details.no-flex {
+.product-details.no-flex {
   height: 60vh;
   display: flex;
   justify-content: center;
@@ -35,13 +35,14 @@ body {
 }
 
 @media (min-width: 64em) {
-  .country-flag,
-  .country-info {
+
+  .product-image,
+  .product-info {
     flex: 1 0 calc(50% - 30px);
   }
 }
 
-.country-flag {
+.product-image {
   flex-shrink: 0;
   width: 450px;
   max-width: 320px;
@@ -53,68 +54,68 @@ body {
 }
 
 @media (max-width: 39.9375em) {
-  .country-flag {
+  .product-image {
     margin-right: 0;
     width: 100%;
   }
 }
 
-.country-flag img {
+.product-image img {
   display: block;
   max-width: 100%;
   object-fit: cover;
 }
 
-.country-info {
+.product-info {
   padding: 40px 0;
 }
 
-.country-info h1 {
+.product-info h1 {
   color: #111517;
   margin-bottom: 30px;
 }
 
-.country-info strong {
+.product-info strong {
   text-transform: capitalize;
   color: #111517;
 }
 
-.country-info strong.warning {
+.product-info strong.warning {
   color: #d21034 !important;
 }
 
-.country-info li {
+.product-info li {
   text-transform: capitalize;
   color: #2b3945;
 }
 
-.country-info li button {
+.product-info li button {
   font-size: inherit;
 }
 
 @media (min-width: 40em) {
-  .country-info > .col-2 {
+  .product-info>.col-2 {
     display: flex;
     align-items: flex-start;
     gap: 140px;
   }
 }
 
-.country-info > .col-2 .col-2 {
+.product-info>.col-2 .col-2 {
   margin: 40px 0;
 }
 
 @media (min-width: 40em) {
-  .country-info > .col-2 .col-2 {
+  .product-info>.col-2 .col-2 {
     margin: 0;
   }
 }
 
-.country-info > .col-2 li {
+.product-info>.col-2 li {
   margin-bottom: 15px;
 }
 
-.country-info > .col-3 {
+.product-info>.col-3 {
   display: flex;
   align-items: center;
   gap: 15px;
@@ -122,12 +123,12 @@ body {
 }
 
 @media (min-width: 40em) {
-  .country-info > .col-3 {
+  .product-info>.col-3 {
     margin-top: 35px;
   }
 }
 
-.country-info > .col-3 ul {
+.product-info>.col-3 ul {
   display: inherit;
   align-items: inherit;
   gap: 8px;

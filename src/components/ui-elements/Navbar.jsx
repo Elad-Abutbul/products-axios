@@ -25,7 +25,7 @@ const Navbar = () => {
       <div className="container flex flex-jc-sb flex-ai-c">
         <div className="logo">
           <Link to="/">
-            <h1>Where in the world?</h1>
+            <h1>Products</h1>
           </Link>
         </div>
         <Button

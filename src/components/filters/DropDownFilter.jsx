@@ -1,27 +1,36 @@
-import UnOrderedList from "../ui-elements/UnOrderedList";
+import UnOrderedList from '../ui-elements/UnOrderedList';
 
-const DropDownFilter = ({ onClick, isOpen, filterByRegion, region }) => {
-  const regions = ["All", "Africa", "Americas", "Asia", "Europe", "Oceania"];
+const DropDownFilter = ({ onClick, isOpen, filterByGenre, genre }) => {
+  // Product categories from FakeStore API
+  const categories = [
+    { id: 'All', name: 'All Categories' },
+    { id: "men's clothing", name: "Men's Clothing" },
+    { id: "women's clothing", name: "Women's Clothing" },
+    { id: 'electronics', name: 'Electronics' },
+    { id: 'jewelery', name: 'Jewelery' },
+  ];
 
   return (
-    <div className={`dropdown-wrapper ${isOpen ? "open" : ""}`}>
+    <div className={`dropdown-wrapper ${isOpen ? 'open' : ''}`}>
       <div
-        className="dropdown-header flex flex-jc-sb flex-ai-c"
+        className='dropdown-header flex flex-jc-sb flex-ai-c'
         onClick={onClick}
       >
-        <span id="region-filter">
-          {region === "All" ? "Filter by Region" : region}
+        <span id='genre-filter'>
+          {genre === 'All'
+            ? 'Filter by Category'
+            : categories.find((c) => c.id === genre)?.name || genre}
         </span>
-        <i className="fa-regular fa-chevron-down icon"></i>
+        <i className='fa-regular fa-chevron-down icon'></i>
       </div>
-      <div className="dropdown-body">
+      <div className='dropdown-body'>
         <UnOrderedList
-          id="list-by-region"
-          items={regions.map((regionItem) => ({
-            label: regionItem,
+          id='list-by-genre'
+          items={categories.map((categoryItem) => ({
+            label: categoryItem.name,
             extraProps: {
               onClick: () => {
-                filterByRegion(regionItem);
+                filterByGenre(categoryItem.id);
                 onClick();
               },
             },

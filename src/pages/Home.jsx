@@ -1,60 +1,41 @@
-import { useState, useEffect } from "react";
-import "../assets/css/common.css";
-import "../assets/css/main.css";
-import Navbar from "../components/ui-elements/Navbar";
-import DropDownFilter from "../components/filters/DropDownFilter";
-import InputFilter from "../components/filters/InputFilter";
-import Card from "../components/ui-elements/Card";
-import Loading from "../components/ui-elements/Loading";
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import '../assets/css/common.css';
+import '../assets/css/main.css';
+import Navbar from '../components/ui-elements/Navbar';
+import DropDownFilter from '../components/filters/DropDownFilter';
+import InputFilter from '../components/filters/InputFilter';
+import Card from '../components/ui-elements/Card';
+import Loading from '../components/ui-elements/Loading';
 
 const Home = () => {
-  const [allCountries, setAllCountries] = useState([]);
-  const [countries, setCountries] = useState([]);
+  const [allProducts, setAllProducts] = useState([]);
+  const [products, setProducts] = useState([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [selectedRegion, setSelectedRegion] = useState("All");
+  const [selectedCategory, setSelectedCategory] = useState('All');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchCountries = async () => {
-      try {
-        const response = await fetch("https://restcountries.com/v3.1/all");
-        if (!response.ok) {
-          throw new Error("Failed to fetch countries");
-        }
-        const data = await response.json();
-        setAllCountries(data);
-        setCountries(data);
-        setLoading(false);
-      } catch (err) {
-        console.error("Error fetching countries:", err);
-        setError(err.message);
-        setLoading(false);
-      }
-    };
+  // API endpoint: 'https://fakestoreapi.com/products'
 
-    fetchCountries();
-  }, []);
+  //TODO: Add useEffect hook to fetch products
+  //TODO: Create fetchProducts async function inside useEffect
+  //TODO: Use axios.get() to fetch from the API
+  //TODO: Update state with setAllProducts() and setProducts()
+  //TODO: Handle loading state with setLoading(false)
+  //TODO: Handle errors with setError()
 
-  const handleSearch = (e) => {
-    const searchValue = e.target.value.toLowerCase();
-    const filteredCountries = allCountries.filter((country) =>
-      country.name.common.toLowerCase().includes(searchValue)
-    );
-    setCountries(filteredCountries);
-  };
-
-  const showFilterByRegion = () => {
+  const showFilterByCategory = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
-  const filterByRegion = (region) => {
-    setSelectedRegion(region);
+  const filterByCategory = (category) => {
+    setSelectedCategory(category);
 
-    const filteredCountries = allCountries.filter(
-      (country) => region === "All" || country.region === region
+    const filteredProducts = allProducts.filter(
+      (product) => category === 'All' || product.category === category,
     );
-    setCountries(filteredCountries);
+    setProducts(filteredProducts);
   };
 
   if (loading) {
@@ -63,7 +44,7 @@ const Home = () => {
 
   if (error) {
     return (
-      <div className="error-screen">
+      <div className='error-screen'>
         <p>Error: {error}</p>
       </div>
     );
@@ -72,24 +53,21 @@ const Home = () => {
   return (
     <>
       <Navbar />
-      <section className="filters">
-        <div className="container">
-          <InputFilter onChange={handleSearch} />
+      <section className='filters'>
+        <div className='container'>
           <DropDownFilter
-            onClick={showFilterByRegion}
+            onClick={showFilterByCategory}
             isOpen={isDropdownOpen}
-            filterByRegion={filterByRegion}
-            region={selectedRegion}
+            filterByGenre={filterByCategory}
+            genre={selectedCategory}
           />
         </div>
       </section>
-      <main className="main">
-        <div className="container">
+      <main className='main'>
+        <div className='container'>
           <section>
-            <div className="countries-grid" id="countries-list">
-              {countries.map((country, index) => (
-                <Card key={index} country={country} routing="details" />
-              ))}
+            <div className='products-grid' id='products-list'>
+              {/* TODO: Render products here */}
             </div>
           </section>
         </div>

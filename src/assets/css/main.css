@@ -144,7 +144,7 @@
   flex-direction: column;
 }
 
-.countries-grid {
+.products-grid {
   display: grid;
   gap: 50px;
 }
@@ -156,24 +156,24 @@
 }
 
 @media (min-width: 40em) {
-  .countries-grid {
+  .products-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (min-width: 64em) {
-  .countries-grid {
+  .products-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media (min-width: 87.5em) {
-  .countries-grid {
+  .products-grid {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   }
 }
 
-.countries-grid .country {
+.products-grid .product {
   position: relative;
   width: 100%;
   border-radius: 6px;
@@ -184,24 +184,24 @@
   transition: transform 0.3s linear, box-shadow 0.2s linear, background-color 0.2s linear;
 }
 
-.countries-grid .country:hover {
+.products-grid .product:hover {
   transform: scale(1.04);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.11);
 }
 
-.countries-grid .country-flag {
+.products-grid .product-image {
   height: 200px;
   width: 100%;
   overflow: hidden;
 }
 
 @media (max-width: 400px) {
-  .countries-grid .country-flag {
+  .products-grid .product-image {
     height: auto;
   }
 }
 
-.countries-grid .country-flag img {
+.products-grid .product-image img {
   display: block;
   width: 100%;
   max-width: 100%;
@@ -209,16 +209,16 @@
   object-fit: cover;
 }
 
-.countries-grid .country-info {
+.products-grid .product-info {
   position: relative;
   padding: 30px 25px;
 }
 
-.countries-grid .country-title {
+.products-grid .product-title {
   margin-bottom: 20px;
 }
 
-.countries-grid .country-brief li {
+.products-grid .product-brief li {
   font-size: 16px;
   text-transform: capitalize;
   margin-bottom: 15px;
