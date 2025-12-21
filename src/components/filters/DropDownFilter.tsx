@@ -1,8 +1,16 @@
+import React from 'react';
 import UnOrderedList from '../ui-elements/UnOrderedList';
+import { Category } from '../../types';
 
-const DropDownFilter = ({ onClick, isOpen, filterByGenre, genre }) => {
-  // Product categories from FakeStore API
-  const categories = [
+interface DropDownFilterProps {
+  onClick: () => void;
+  isOpen: boolean;
+  filterByGenre: (id: string) => void;
+  genre: string;
+}
+
+const DropDownFilter: React.FC<DropDownFilterProps> = ({ onClick, isOpen, filterByGenre, genre }) => {
+  const categories: Category[] = [
     { id: 'All', name: 'All Categories' },
     { id: "men's clothing", name: "Men's Clothing" },
     { id: "women's clothing", name: "Women's Clothing" },

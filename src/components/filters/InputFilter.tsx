@@ -1,6 +1,11 @@
+import React from 'react';
 import Input from '../ui-elements/Input';
 
-const InputFilter = (props) => {
+interface InputFilterProps {
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+const InputFilter: React.FC<InputFilterProps> = (props) => {
   return (
     <div className='search-wrapper'>
       <i className='fa-regular fa-magnifying-glass search-icon'></i>
