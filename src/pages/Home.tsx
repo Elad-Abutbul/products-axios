@@ -1,41 +1,31 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../assets/css/common.css';
 import '../assets/css/main.css';
 import Navbar from '../components/ui-elements/Navbar';
 import DropDownFilter from '../components/filters/DropDownFilter';
-import InputFilter from '../components/filters/InputFilter';
-import Card from '../components/ui-elements/Card';
 import Loading from '../components/ui-elements/Loading';
+import Card from '../components/product-components/Card';
+import { Product } from '../types';
 
-const Home = () => {
-  const [allProducts, setAllProducts] = useState([]);
-  const [products, setProducts] = useState([]);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState('All');
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+const Home: React.FC = () => {
+  const [allProducts, setAllProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
+  const [selectedCategory, setSelectedCategory] = useState<string>('All');
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
-  // API endpoint: 'https://fakestoreapi.com/products'
-
-  //TODO: Add useEffect hook to fetch products
-  //TODO: Create fetchProducts async function inside useEffect
-  //TODO: Use axios.get() to fetch from the API
-  //TODO: Update state with setAllProducts() and setProducts()
-  //TODO: Handle loading state with setLoading(false)
-  //TODO: Handle errors with setError()
+//TODO - useEffect + axios
 
   const showFilterByCategory = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
-  const filterByCategory = (category) => {
+  // TODO - filter products by category - BONUS
+  const filterByCategory = (category: string) => {
     setSelectedCategory(category);
-
-    const filteredProducts = allProducts.filter(
-      (product) => category === 'All' || product.category === category,
-    );
-    setProducts(filteredProducts);
+    //TODO - filter products by category
   };
 
   if (loading) {
@@ -67,7 +57,7 @@ const Home = () => {
         <div className='container'>
           <section>
             <div className='products-grid' id='products-list'>
-              {/* TODO: Render products here */}
+              {/* TODO - map products */}
             </div>
           </section>
         </div>

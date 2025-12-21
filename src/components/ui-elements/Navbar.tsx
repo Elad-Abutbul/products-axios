@@ -1,32 +1,28 @@
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import Button from "./Button";
 
-const Navbar = () => {
-  const [isDarkMode, setIsDarkMode] = useState(() => {
+const Navbar: React.FC = () => {
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
     const savedMode = localStorage.getItem("isDarkMode");
     return savedMode === "true" ? true : false;
   });
 
   useEffect(() => {
     document.body.classList.toggle("dark-theme", isDarkMode);
-    localStorage.setItem("isDarkMode", isDarkMode);
+    localStorage.setItem("isDarkMode", JSON.stringify(isDarkMode));
   }, [isDarkMode]);
 
   const toggleDarkMode = () => {
     setIsDarkMode((prevMode) => !prevMode);
-    if (isDarkMode) {
-      document.activeElement.blur();
-    }
   };
 
   return (
     <header className="header">
       <div className="container flex flex-jc-sb flex-ai-c">
         <div className="logo">
-          <Link to="/">
+          <a href="/">
             <h1>Products</h1>
-          </Link>
+          </a>
         </div>
         <Button
           type="button"
