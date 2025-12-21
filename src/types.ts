@@ -1,11 +1,19 @@
 export interface Rating {
-//TODO
+rate:number,
+count:number
 }
 
 export interface Product {
-//TODO
+  id: number;
+  title: string;
+  price: number;
+  description: string;
+  category: string;
+  image: string;
+  rating: Rating
 }
 
 export interface Category {
-//TODO
+  id:string,
+  name:string,
 }
