@@ -7,6 +7,7 @@ import DropDownFilter from "../components/filters/DropDownFilter";
 import Loading from "../components/ui-elements/Loading";
 import Card from "../components/product-components/Card";
 import { Product } from "../types";
+import Modal from "../components/product-components/Modal";
 
 const Home: React.FC = () => {
   const [allProducts, setAllProducts] = useState<Product[]>([]);
@@ -15,7 +16,8 @@ const Home: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-
+  const [modal, setModal] = useState<boolean>(false);
+  const [modalProduct, setModalProduct] = useState<Product | null>(null);
   useEffect(() => {
     const api = async () => {
       try {
@@ -33,15 +35,22 @@ const Home: React.FC = () => {
   const showFilterByCategory = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
-
- const filterByCategory = (category: string) => {
-  setSelectedCategory(category);
-  if (category === "All") {
-    setProducts(allProducts);
-    return;
-  }
-  setProducts(allProducts.filter((p) => p.category === category));
-};
+  const openModal = (product: Product): void => {
+    setModal(true);
+    setModalProduct(product);
+  };
+  const closeModal = (): void => {
+    setModal(false);
+    setModalProduct(null);
+  };
+  const filterByCategory = (category: string) => {
+    setSelectedCategory(category);
+    if (category === "All") {
+      setProducts(allProducts);
+      return;
+    }
+    setProducts(allProducts.filter((p) => p.category === category));
+  };
 
   if (loading) {
     return <Loading />;
@@ -57,6 +66,10 @@ const Home: React.FC = () => {
 
   return (
     <>
+      {modal && modalProduct && (
+        <Modal product={modalProduct} closeModal={closeModal} />
+      )}
+
       <Navbar />
       <section className="filters">
         <div className="container">
@@ -73,7 +86,13 @@ const Home: React.FC = () => {
           <section>
             <div className="products-grid" id="products-list">
               {products.map((product) => {
-                return <Card key={product.id} product={product} />;
+                return (
+                  <Card
+                    key={product.id}
+                    product={product}
+                    openModal={openModal}
+                  />
+                );
               })}
             </div>
           </section>

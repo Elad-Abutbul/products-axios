@@ -2,13 +2,13 @@ import React from "react";
 import { Product } from "../../types";
 
 interface CardProps {
-  product: Product
-  key:number
+  product: Product;
+  openModal: (product: Product) => void;
 }
 
-const Card: React.FC<CardProps> = ( {product} : CardProps) => {
+const Card: React.FC<CardProps> = ({ product, openModal }: CardProps) => {
   return (
-    <div className="product scale-effect">
+    <div className="product scale-effect" onClick={() => openModal(product)}>
       <div className="product-image">
         <img src={product.image} />
       </div>
