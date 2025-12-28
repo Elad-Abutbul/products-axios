@@ -8,6 +8,7 @@ import Loading from "../components/ui-elements/Loading";
 import Card from "../components/product-components/Card";
 import { Product } from "../types";
 import Modal from "../components/product-components/Modal";
+import { HOME_CONSTANTS } from "../constants/Home";
 
 const Home: React.FC = () => {
   const [allProducts, setAllProducts] = useState<Product[]>([]);
@@ -16,36 +17,36 @@ const Home: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const [modal, setModal] = useState<boolean>(false);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [modalProduct, setModalProduct] = useState<Product | null>(null);
   useEffect(() => {
-    const api = async () => {
+    const getData = async () => {
       try {
-        const res = await axios.get("https://fakestoreapi.com/products");
+        const res = await axios.get(HOME_CONSTANTS.URL_API);
         setProducts(res.data);
         setAllProducts(res.data);
       } catch (error) {
-        setError("failed");
+        setError(HOME_CONSTANTS.FAILED);
       } finally {
         setLoading(false);
       }
     };
-    api();
+    getData();
   }, []);
   const showFilterByCategory = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
   const openModal = (product: Product): void => {
-    setModal(true);
+    setIsModalOpen(true);
     setModalProduct(product);
   };
   const closeModal = (): void => {
-    setModal(false);
+    setIsModalOpen(false);
     setModalProduct(null);
   };
   const filterByCategory = (category: string) => {
     setSelectedCategory(category);
-    if (category === "All") {
+    if (category === HOME_CONSTANTS.ALL) {
       setProducts(allProducts);
       return;
     }
@@ -59,14 +60,14 @@ const Home: React.FC = () => {
   if (error) {
     return (
       <div className="error-screen">
-        <p>Error: {error}</p>
+        <p>{HOME_CONSTANTS.ERROR} {error}</p>
       </div>
     );
   }
 
   return (
     <>
-      {modal && modalProduct && (
+      {isModalOpen && modalProduct && (
         <Modal product={modalProduct} closeModal={closeModal} />
       )}
 
